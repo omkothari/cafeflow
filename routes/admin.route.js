@@ -8,7 +8,7 @@ const productModel = require('../models/products.model.js');
 const orderModel = require('../models/orders.model.js')
 
 router.get('/',(req,res)=>{
-    res.render('admin')
+    res.render('admin');
 })
 
 router.post('/register', async (req, res) => {
