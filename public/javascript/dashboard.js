@@ -1,6 +1,6 @@
 const handleDashboard = async () => {
   const dashboardContent = document.querySelector(".DashboardContent");
-  const response = await fetch("http://localhost:3000/get/orders");
+  const response = await fetch("https://cafeflow.onrender.com/get/orders");
   const orders = await response.json();
 
   let total = 0;
@@ -82,7 +82,7 @@ const handleDashboard = async () => {
 
 const handelOrder = async () => {
   const dashboardContent = document.querySelector(".DashboardContent");
-  const response = await fetch("http://localhost:3000/get/orders");
+  const response = await fetch("https://cafeflow.onrender.com/get/orders");
   const orders = await response.json();
 
   let tableRows = "";
@@ -137,7 +137,7 @@ const handelOrder = async () => {
 
 const handelItems = async () => {
   const dashboardContent = document.querySelector(".DashboardContent");
-  const response = await fetch("http://localhost:3000/get/products");
+  const response = await fetch("https://cafeflow.onrender.com/get/products");
   const products = await response.json();
 
   let tableRows = "";
@@ -185,7 +185,7 @@ const handelItems = async () => {
 
 // Add this function to handle availability updates
 window.updateAvailability = async (id, available) => {
-  await fetch(`http://localhost:3000/admin/update-product/${id}`, {
+  await fetch(`https://cafeflow.onrender.com/admin/update-product/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ availability: available }),
