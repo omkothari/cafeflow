@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
 const productModel = require('./models/products.model.js');
 const isLoggedIn = require('./middlewares/isLoggedIn.js');
 const orderModel = require('./models/orders.model.js');
-const helmet = require("helmet");
+// const helmet = require("helmet");
 
 
 app.set('view engine', 'ejs');
@@ -19,19 +19,36 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(Path.join(__dirname, 'public')));
 app.use(cookieParser());
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "blob:"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", "data:", "blob:"],
-      connectSrc: ["'self'"],
-      objectSrc: ["'none'"],
-      upgradeInsecureRequests: [],
-    },
-  })
-);
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       defaultSrc: ["'self'"],
+//       scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "blob:"],
+//       styleSrc: ["'self'", "'unsafe-inline'"],
+//       imgSrc: ["'self'", "data:", "blob:"],
+//       connectSrc: ["'self'"],
+//       objectSrc: ["'none'"],
+//       upgradeInsecureRequests: [],
+//     },
+//   })
+// );
+// app.use((req, res, next) => {
+//   res.setHeader(
+//     "Content-Security-Policy",
+//     "default-src 'self'; " +
+//       "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; " +
+//       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+//       "font-src 'self' https://fonts.gstatic.com data:; " +
+//       "img-src 'self' data: blob:; " +
+//       "connect-src 'self'; " +
+//       "object-src 'none'; " +
+//       "frame-ancestors 'self'; " +
+//       "base-uri 'self'; " +
+//       "form-action 'self';"
+//   );
+//   next();
+// });
+
 
 app.use('/admin', adminRoutes);
 
