@@ -19,6 +19,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(Path.join(__dirname, 'public')));
 app.use(cookieParser());
+app.use((err, req, res, next) => {
+  console.error("❌ Server Error:", err.stack);
+  res.status(500).send({ error: "Internal Server Error", details: err.message });
+});
 // app.use(
 //   helmet.contentSecurityPolicy({
 //     directives: {
